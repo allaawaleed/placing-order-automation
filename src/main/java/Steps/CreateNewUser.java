@@ -150,31 +150,11 @@ public class CreateNewUser extends BasePage {
 		waitForVisabilty(By.className("logout"), 10);
 		Log.info("System created account succesffuly and navigate user "
 				+ "to the My Account screen and displayed Logout button" + logoutButton.isDisplayed());
-
+		// logoutButton.click();
 	}
 
-// TODO 
+// TODO  to save created email and password 
 	public void userInfo() {
-		// Start fill the mandatory fields with valid data
-//		firstName.sendKeys(userInfo.getFirstName());
-//		lastName.sendKeys(userInfo.getLastName());
-//		password.sendKeys(userInfo.getPassword());
-//		Log.info("passowrd" + userInfo.getPassword().toString());
-//		day.sendKeys(userInfo.getDay());
-//		Log.info("day" + userInfo.getDay().toString());
-//		month.sendKeys(userInfo.getMonth());
-//		Log.info("month" + userInfo.getMonth().toString());
-//		year.sendKeys(userInfo.getYear());
-//		Log.info("year" + userInfo.getYear().toString());
-//		company.sendKeys(userInfo.getCompany());
-//		mainAddress.sendKeys(userInfo.getMainAddress());
-//		secondAddress.sendKeys(userInfo.getSecondAddress());
-//		cityField.sendKeys(userInfo.getCityField());
-//		stateField.sendKeys(userInfo.getStateField());
-//		postCode.sendKeys(userInfo.getPostCode());
-//		mobile.sendKeys(userInfo.getMobile());
-//		addressAlias.sendKeys(userInfo.getAddressAlias());
-//		registerButton.click();
 
 	}
 

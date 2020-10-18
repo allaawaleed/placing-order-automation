@@ -12,11 +12,13 @@ import Utilities.Log;
 
 public class CategoryPage extends BasePage {
 	WebDriverWait wait;
+	Actions action;
 
 	public CategoryPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 5);
+		action = new Actions(driver);
 	}
 
 	@FindBy(linkText = "Women")
@@ -42,12 +44,14 @@ public class CategoryPage extends BasePage {
 	public void openSubCategory() {
 		// Using Action to hover on menu and select subcategory
 
-		Actions action = new Actions(driver);
 //		action.moveToElement(womencategory).build().perform();
 //		blousesSubCategory.click();
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("window.scrollBy(0,250)", "");
 
-		action.moveToElement(womencategory);
-		action.moveToElement(blousesSubCategory).click().build().perform();
+		action.moveToElement(womencategory).pause(5).perform();
+		action.moveToElement(blousesSubCategory).pause(5).perform();
+		blousesSubCategory.click();
 
 		// action.moveToElement(blousesSubCategory).click().perform();
 

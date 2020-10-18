@@ -5,16 +5,22 @@ import static org.hamcrest.Matchers.containsString;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import Steps.CategoryPage;
+import Steps.ConfirmOrder;
+import Steps.CreateBasket;
 import Steps.CreateNewUser;
 import Steps.LoginScreen;
+import Steps.OrderHistory;
+import Steps.ProceedToCheeckout;
 import Utilities.Log;
 
 public class ExecuteTC {
@@ -42,7 +48,7 @@ public class ExecuteTC {
 		Log.info("------------------Test Case Execution DONE-----------------------");
 	}
 
-	@Test(priority = 1, enabled = false, description = "Verify create new account by valid data")
+	@Test(priority = 1, enabled = true, description = "Verify create new account by valid data")
 
 	public void verifyHomeScreen() throws InterruptedException {
 		Log.info("Verify create new account by valid data");
@@ -53,7 +59,7 @@ public class ExecuteTC {
 
 	}
 
-	@Test(priority = 2, enabled = true, description = "Verify login by the created user")
+	@Test(priority = 2, enabled = false, description = "Verify login by the created user")
 
 	public void loginScenario() throws InterruptedException {
 		Log.info("Verify login by the created user");
@@ -70,10 +76,60 @@ public class ExecuteTC {
 	public void openSubcategory() throws InterruptedException {
 		Log.info("Verify open sub-category");
 		CategoryPage subcategory = new CategoryPage(driver);
-		// Click on The Sign In Button
 		subcategory.openSubCategory();
-		assertThat(subcategory.getBlousTitle().getText(), containsString("Blouses"));
+		assertThat(driver.getCurrentUrl(), containsString("id_category=7"));
 
+	}
+
+	@Test(priority = 4, enabled = true, description = "Verify add item to the basket and check basket")
+
+	public void creatBasket() throws InterruptedException {
+		Log.info("Verify add item to the basket and check basket");
+		CreateBasket basket = new CreateBasket(driver);
+		basket.createBasket();
+		assertThat(driver.getCurrentUrl(), containsString("order"));
+
+	}
+
+	@Test(priority = 5, enabled = true, description = "Verify proceed in the checkout and accept Terms & confidtions")
+
+	public void proceedCheckout() throws InterruptedException {
+		Log.info("Verify proceed in the checkout and accept Terms & confidtions");
+		ProceedToCheeckout proceedCheckout = new ProceedToCheeckout(driver);
+		proceedCheckout.cart();
+
+		assertThat(driver.findElement(By.xpath("//h1[contains(text(),' payment method')]")).getText(),
+				containsString("PAYMENT"));
+	}
+
+	@Test(priority = 6, enabled = true, description = "Verify check payment and confirm order")
+
+	public void confrimOrder() throws InterruptedException {
+		Log.info("Verify check payment and confirm order");
+		ConfirmOrder confirm = new ConfirmOrder(driver);
+		// Select payment
+		confirm.selectPaymentAndConfrim();
+		// Check order confrimation
+		confirm.orderConfirmation();
+		assertThat(driver.findElement(By.className("cheque-indent")).getText(), containsString("complete"));
+
+	}
+
+	@Test(priority = 7, enabled = true, description = "Validate that order placed")
+
+	public void orderHistory() throws InterruptedException {
+		Log.info("Validate that order placed");
+		OrderHistory orderH = new OrderHistory(driver);
+		orderH.orderHistory();
+
+		assertThat(driver.findElement(By.className("history_method")).getText(), containsString("Bank"));
+
+	}
+
+	@AfterClass
+	public void CloseBrowser() {
+
+		driver.quit();
 	}
 
 }

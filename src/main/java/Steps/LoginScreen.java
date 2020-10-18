@@ -35,10 +35,10 @@ public class LoginScreen extends BasePage {
 	public void loginByCreatedUser() {
 		loginButton.click();
 		waitForVisabilty(By.xpath("//h3[contains(text(),'Already registered?')]"), 10);
-		// userInfo.getEmail()
-		emailField.sendKeys("billie.lockman@hotmail.com");
-		// userInfo.getPassword()
-		passwordField.sendKeys("27080");
+		// billie.lockman@hotmail.com
+		emailField.sendKeys(userInfo.getEmail());
+		// "27080"
+		passwordField.sendKeys(userInfo.getPassword());
 		signInButton.click();
 	}
 
