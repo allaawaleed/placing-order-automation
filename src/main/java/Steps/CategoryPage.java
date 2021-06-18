@@ -42,18 +42,12 @@ public class CategoryPage extends BasePage {
 	}
 
 	public void openSubCategory() {
-		// Using Action to hover on menu and select subcategory
 
-//		action.moveToElement(womencategory).build().perform();
-//		blousesSubCategory.click();
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("window.scrollBy(0,250)", "");
 
 		action.moveToElement(womencategory).pause(5).perform();
 		action.moveToElement(blousesSubCategory).pause(5).perform();
 		blousesSubCategory.click();
 
-		// action.moveToElement(blousesSubCategory).click().perform();
 
 		waitForVisabilty(By.className("cat-name"), 10);
 		Log.info("Verify that system navigate user correctly to blocus sub categry and it dispalus -> "
