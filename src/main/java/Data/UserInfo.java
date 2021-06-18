@@ -10,7 +10,6 @@ public class UserInfo {
 	String firstname = fakeData.name().firstName();
 	String lastName = fakeData.name().lastName();
 	String password = fakeData.number().digits(5).toString();
-	// int day = fakeData.number().randomDigit();
 	String day = fakeData.name().name();// fakeData.date().birthday().toString();
 	String month = fakeData.name().name();
 	String year = fakeData.name().name();// fakeData.number().digits(4).toString();
@@ -20,8 +19,6 @@ public class UserInfo {
 	String cityField = fakeData.address().city();
 	String stateField = fakeData.address().state();
 	String postCode = fakeData.number().digits(5).toString();
-	// private String other;
-	// private String phone;
 	String mobile = fakeData.phoneNumber().cellPhone();
 	String addressAlias = fakeData.name().username();
 
