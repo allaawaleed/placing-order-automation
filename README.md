@@ -4,7 +4,7 @@
  * Project consists of 4 packages as the following:
    * Data: This contains all data driven needed -> I used java faker
    * steps: This contains all test cases in the separate classes.
-   * execution: This contains test classes [TODO]
+   * execution: This contains test classes "This should contain test class for every page" [TODO]
    * utility: This contains the logging class and Basic.
 
 
